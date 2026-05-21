@@ -1,0 +1,36 @@
+
+name: Python application one
+
+on:
+  push:
+    branches: [ "main" , "pepito" ]
+ 
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.11"
+    - name: Install dependencies
+      run: |
+        pip install -r requerements.txt
+        pip install pandas
+        pip install pytest
+    - name: Ejecutar aplicacion
+      run: python app.py
+    
+    - name: Test with pytest
+      run: |
+        pytest
+
+    - name: Simulacion del deploy
+      run: echo "Desplegando app de python..."
+        
+
+    
